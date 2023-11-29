@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "flowise"
-        image: "gcr.io/midika-flowise/flowise:latest"
+        image: "europe-west8-docker.pkg.dev/midika-flowise/flowise-repo/flowise:latest"
         imagePullPolicy: "Always"
         resources: 
           requests:
