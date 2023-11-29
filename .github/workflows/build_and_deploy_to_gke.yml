@@ -19,10 +19,6 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
     environment: production
-    env:
-      FLOWISE_USERNAME: admin
-      FLOWISE_PASSWORD: admin
-
 
     steps:
     - name: Checkout
@@ -46,6 +42,13 @@ jobs:
       with:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
+
+    # create env file
+    - name: Create env file
+      run: |-
+        touch docker/.env
+        echo FLOWISE_USERNAME=${{ secrets.FLOWISE_USERNAME }} >> .env
+        echo FLOWISE_PASSWORD=${{ secrets.FLOWISE_PASSWORD }} >> .env
 
     # Build the Docker image
     - name: Build
