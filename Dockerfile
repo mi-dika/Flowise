@@ -6,13 +6,6 @@
 
 FROM --platform=linux/amd64 node:18-alpine
 
-# ARGS & ENVS
-ARG FLOWISE_USERNAME
-ARG FLOWISE_PASSWORD
-
-ENV FLOWISE_USERNAME ${FLOWISE_USERNAME}
-ENV FLOWISE_PASSWORD ${FLOWISE_PASSWORD}
-
 RUN apk add --update libc6-compat python3 make g++
 # needed for pdfjs-dist
 RUN apk add --no-cache build-base cairo-dev pango-dev

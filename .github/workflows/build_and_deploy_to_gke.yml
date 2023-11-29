@@ -19,6 +19,10 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
     environment: production
+    env:
+      FLOWISE_USERNAME: admin
+      FLOWISE_PASSWORD: admin
+
 
     steps:
     - name: Checkout
@@ -29,9 +33,6 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GKE_SA_KEY }}'
-        build-args: |
-              "FLOWISE_USERNAME=${{ secrets.FLOWISE_USERNAME }}"
-              "FLOWISE_PASSWORD=${{ secrets.FLOWISE_PASSWORD }}"
 
     # Configure Docker to use the gcloud command-line tool as a credential
     # helper for authentication
