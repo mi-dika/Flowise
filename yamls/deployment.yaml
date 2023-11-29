@@ -23,3 +23,14 @@ spec:
           requests:
             cpu: "1"
             memory: "1Gi"
+        env:
+        - name: FLOWISE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: flowise-secrets
+              key: FLOWISE_USERNAME
+        - name: FLOWISE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: flowise-secrets
+              key: FLOWISE_PASSWORD
