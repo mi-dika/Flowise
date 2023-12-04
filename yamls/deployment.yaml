@@ -15,6 +15,10 @@ spec:
       labels:
         app: "flowise"
     spec:
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: flowise-pv-claim
       containers:
       - name: "flowise"
         image: "europe-west8-docker.pkg.dev/midika-flowise/flowise-repo/flowise:latest"
@@ -23,6 +27,12 @@ spec:
           requests:
             cpu: "0.5"
             memory: "0.8Gi"
+        volumeMounts:
+            - mountPath: "/root/.flowise"
+              name: storage-volume
+        envFrom:
+        - configMapRef:
+            name: dotenv
         env:
         - name: FLOWISE_USERNAME
           valueFrom:

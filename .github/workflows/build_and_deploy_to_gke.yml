@@ -61,4 +61,5 @@ jobs:
       run: |-
         kubectl apply -f yamls/deployment.yaml
         kubectl apply -f yamls/service.yaml
+        kubectl apply -f yamls/disk-pv.yaml
         kubectl get pods
