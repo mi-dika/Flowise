@@ -21,8 +21,8 @@ spec:
         imagePullPolicy: "Always"
         resources: 
           requests:
-            cpu: "1"
-            memory: "1Gi"
+            cpu: "0.5"
+            memory: "0.8Gi"
         env:
         - name: FLOWISE_USERNAME
           valueFrom:
